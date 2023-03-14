@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import Login from './components/Login'
+import Menu from './components/Menu'
+import {ProtectedRout} from './components/ProtectedRout'
+import {DataContextProvider} from './contexts/dataContext'
+import {BrowserRouter, Routes, Route} from 'react-router-dom'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Prueba
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+function App(){
+
+
+
+  return <>
+  <DataContextProvider>
+    <BrowserRouter>
+      <Routes>
+          <Route path='/menu' element={
+            <ProtectedRout user=''>
+              <Menu/>
+            </ProtectedRout>}>
+          </Route>
+          <Route path='/' element={ <Login/> }></Route>
+      </Routes>
+    </BrowserRouter>
+  </DataContextProvider>
+  </>
 }
 
-export default App;
+
+
+export default App
