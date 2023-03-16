@@ -24,13 +24,13 @@ function Login(props){
         }
         try{
 
-          const user = await axios.post('http://143.110.170.202/api' + '/login',payload)
+          const user = await axios.post('https://la220219gback.site/api' + '/login',payload)
           if (user.status == 200){
             const payloadToken =  {
                 "username": inputUsername,
             }
 
-            const token = await axios.post('http://143.110.170.202/api' + '/getToken',payloadToken)
+            const token = await axios.post('https://la220219gback.site/api' + '/getToken',payloadToken)
             if(token.status == 200){
 
                 const cookie = new Cookies();
